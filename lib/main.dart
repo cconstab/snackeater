@@ -12,7 +12,7 @@ import 'package:path_provider/path_provider.dart'
     show getApplicationSupportDirectory;
 import 'package:at_app_flutter/at_app_flutter.dart' show AtEnv;
 
-String snack = '';
+//String snack = '';
 Future<void> main() async {
   await AtEnv.load();
   runApp(const MyApp());
@@ -174,7 +174,7 @@ void getAtsignData(context, String notificationKey) async {
   // The magic line that picks up the snack
   var snackKey = await atClient.get(key);
   // Yes that is all you need to do! 
-  snack = snackKey.value.toString();
+  var snack = snackKey.value.toString();
 
   final snackBar = SnackBar(
     content: Text('Yay! A $snack !'),
