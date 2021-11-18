@@ -177,7 +177,7 @@ void getAtsignData(context, String notificationKey) async {
   var snack = snackKey.value.toString();
 
   final snackBar = SnackBar(
-    content: Text('Yay! A $snack !'),
+    content: Text('Yay! A$snack !'),
     action: SnackBarAction(
       label: 'Undo',
       onPressed: () {
@@ -199,11 +199,18 @@ void sendAtsignData(String sendSnackTo) async {
 
 
   var snacks = [
-    'Milky Way',
-    'Dime Bar',
-    'Cruchy Bar',
-    'Mars Bar',
-    'Snickers Bar'
+    ' Milky Way',
+    ' Dime Bar',
+    ' Crunchy Bar',
+    ' Mars Bar',
+    ' Snickers Bar',
+    ' Zagnut Bar',
+    'n Almond Joy Bar',
+    ' 3 Musketeers Bar',
+    ' Clark Bar',
+    ' Caramello Bar',
+    ' Twix Bar',
+    ' KitKat Bar',
   ];
   String? currentAtsign;
   late AtClient atClient;
