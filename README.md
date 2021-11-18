@@ -64,11 +64,11 @@ Once again we had to set up some basic information for the key with this code:-
     ..metadata = metaData;
 ```
   
-  We now have the data from the send containing our snack, so we display it with the snackbar widget.
+  We now have the data from the sending @sign containing our snack, so we display it with the snackbar widget.
 
   `ScaffoldMessenger.of(context).showSnackBar(snackBar);`  
 
-  It really is that simple to send a fully End to End Encrypted message from on e @sign to another using the @platform..
+  It really is that simple to send a fully End to End Encrypted message from one @sign to another using the @platform..
 
   Get a couple of @signs and send a snack ! Better still get a friend to get an @sign and send them a snack !
 
