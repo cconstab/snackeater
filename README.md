@@ -1,7 +1,7 @@
 # snackeater
  Send Snacks demo using the @platform
 
- Simple demo app showing the power of the @platform to send information from one person to another full encrypted.
+ Simple demo app showing the power of the @platform to send information from one person to another fully end to end encrypted.
 
   In this case we send a snack and when it is recieved we pop up a snack bar widget..
 
