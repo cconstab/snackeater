@@ -73,7 +73,7 @@ Once again we had to set up some basic information for the key with this code:-
   Get a couple of @signs and send a snack ! Better still get a friend to get an @sign and send them a snack !
 
   ## PR's and improvements
-  Want to add you favorite snack ? Raise a PR!, Want to improve my code ? Cool raise a PR ? Got a bug ? Cool raise an issue or better still a PR.
+  Want to add your favorite snack ? Raise a PR!, Want to improve my code ? Cool raise a PR ? Got a bug ? Cool raise an issue or better still a PR.
   Have fun trying the @platform..
  
   Send me a snack!
