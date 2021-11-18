@@ -177,7 +177,7 @@ void getAtsignData(context, String notificationKey) async {
   var snack = snackKey.value.toString();
 
   final snackBar = SnackBar(
-    content: Text('Yay! A$snack !'),
+    content: Text('Yay! A$snack ! From $sharedByAtsign'),
     action: SnackBarAction(
       label: 'Undo',
       onPressed: () {
