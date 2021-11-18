@@ -5,6 +5,8 @@
 
   In this case we send a snack and when it is recieved we pop up a snack bar widget..
 
+![image](https://user-images.githubusercontent.com/6131216/142484446-d16c2d23-9d82-4f55-9815-5b7e734d54fb.png)
+
   #
   Quick note.. When you run this for the first time in debug mode you will have to play over the fact you have no @sign yet. Nothing is broken just the IDE letting you know.. It's just a demo :-)
 
@@ -77,6 +79,7 @@ Once again we had to set up some basic information for the key with this code:-
   Send me a snack!
 
   @colin
+
 
 
 
