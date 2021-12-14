@@ -92,6 +92,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  Snack lastsnack = Snack(snack: 'none');
   @override
   Widget build(BuildContext context) {
     /// Get the AtClientManager instance
@@ -117,10 +118,11 @@ class _HomeScreenState extends State<HomeScreen> {
             const Text('Send yourself a snackbar'),
             ElevatedButton(
               onPressed: () {
-                sendAtsignData.call();
+                sendAtsignData.call(context, lastsnack);
               },
               child: const Text('Send a snack'),
-            )
+            ),
+            const Spacer(flex: 1,),
           ],
         ),
       ),
@@ -128,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-void sendAtsignData() async {
+void sendAtsignData(context, Snack lastsnack) async {
   /// Get the AtClientManager instance
   var atClientManager = AtClientManager.getInstance();
 
@@ -160,7 +162,7 @@ void sendAtsignData() async {
     ..isPublic = true
     ..isEncrypted = true
     ..namespaceAware = true
-    ..ttl = 1000000;
+    ..ttl = 100000;
 
   var key = AtKey()
     ..key = 'snackbar'
@@ -169,10 +171,27 @@ void sendAtsignData() async {
     ..metadata = metaData;
 
   // The magic line to send the snack
-  print(key.toString());
   Snack snackbar = Snack(snack: snacks[Random().nextInt(snacks.length)]);
-  print(snackbar.toJson().toString());
+  // Make sure we send a fresh snack !
+  while (lastsnack.snack == snackbar.snack) {
+    snackbar = Snack(snack: snacks[Random().nextInt(snacks.length)]);
+  }
   await atClient.put(key, snackbar.toJson().toString());
+  popSnackBar(context, snackbar.snack);
+}
+
+void popSnackBar(context, String snack) {
+  final snackBar = SnackBar(
+    content: Text('We just sent A$snack ! '),
+    action: SnackBarAction(
+      label: 'Undo',
+      onPressed: () {
+        // Some code to undo the change.
+      },
+    ),
+  );
+
+  ScaffoldMessenger.of(context).showSnackBar(snackBar);
 }
 
 class Snack {
@@ -185,6 +204,6 @@ class Snack {
   Snack.fromJson(Map<String, dynamic> json) : snack = json['snack'];
 
   Map<String, dynamic> toJson() => {
-        'snack': snack,
+        '"snack"': '"$snack"',
       };
 }
