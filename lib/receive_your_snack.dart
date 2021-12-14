@@ -142,6 +142,6 @@ class Snack {
   Snack.fromJson(Map<String, dynamic> json) : snack = json['snack'];
 
   Map<String, dynamic> toJson() => {
-        'snack': snack,
+        '"snack"': '"$snack"',
       };
 }
