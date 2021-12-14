@@ -182,7 +182,7 @@ void sendAtsignData(context, Snack lastsnack) async {
 
 void popSnackBar(context, String snack) {
   final snackBar = SnackBar(
-    content: Text('We just sent A$snack ! '),
+    content: Text('We just sent. A$snack ! '),
     action: SnackBarAction(
       label: 'Undo',
       onPressed: () {
