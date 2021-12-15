@@ -64,7 +64,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Snack lastsnack = Snack(snack: 'hungry');
+  Snack lastsnack = Snack(snack: 'hungry', mode: 'light');
 
   late Timer timer;
 @override
@@ -101,21 +101,21 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 Future<void> checkForSnacks(context, String atsign, Snack lastsnack) async {
-  String mysnack = await getAtsignData(atsign);
-  if (mysnack != lastsnack.snack) {
-    popSnackBar(context, mysnack);
+  Snack mysnack = await getAtsignData(atsign);
+  if (mysnack.snack != lastsnack.snack) {
+    popSnackBar(context, mysnack.snack);
   }
-  lastsnack.snack = mysnack;
+  lastsnack.snack = mysnack.snack;
 }
 
-Future<String> getAtsignData(String atsign) async {
+Future<Snack> getAtsignData(String atsign) async {
   String lookup = 'https://wavi.ng/api?atp=snackbar.fourballcorporate9$atsign';
   http.Response result = await http.get(Uri.parse(lookup));
   var snackMap = jsonDecode(result.body);
   // Known key 'snackbar' known NAMESPACE 'fourballcorporate9`
   var snackJson = jsonDecode(snackMap[0]['snackbar.fourballcorporate9']);
   var snack = Snack.fromJson(snackJson);
-  return ((snack.snack.toString()));
+  return (snack);
 }
 
 void popSnackBar(context, String snack) {
@@ -134,14 +134,19 @@ void popSnackBar(context, String snack) {
 
 class Snack {
   String snack;
+  String? mode;
 
   Snack({
     required this.snack,
+    this.mode,
   });
 
-  Snack.fromJson(Map<String, dynamic> json) : snack = json['snack'];
+  Snack.fromJson(Map<String, dynamic> json) :
+   snack = json['snack'],
+   mode = json['mode'];
 
   Map<String, dynamic> toJson() => {
         '"snack"': '"$snack"',
+        '"mode"': '"$mode"',
       };
 }

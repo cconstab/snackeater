@@ -174,7 +174,7 @@ void sendAtsignData(context, Snack lastsnack) async {
   Snack snackbar = Snack(snack: snacks[Random().nextInt(snacks.length)]);
   // Make sure we send a fresh snack !
   while (lastsnack.snack == snackbar.snack) {
-    snackbar = Snack(snack: snacks[Random().nextInt(snacks.length)]);
+    snackbar = Snack(snack: snacks[Random().nextInt(snacks.length)], mode: 'dark');
   }
   await atClient.put(key, snackbar.toJson().toString());
   popSnackBar(context, snackbar.snack);
@@ -196,14 +196,19 @@ void popSnackBar(context, String snack) {
 
 class Snack {
   String snack;
+  String mode;
 
   Snack({
     required this.snack,
+    this.mode,
   });
 
-  Snack.fromJson(Map<String, dynamic> json) : snack = json['snack'];
+  Snack.fromJson(Map<String, dynamic> json) :
+   snack = json['snack'],
+   dark = json['mode'];
 
   Map<String, dynamic> toJson() => {
         '"snack"': '"$snack"',
+        '"mode"': '"$mode"',
       };
 }
