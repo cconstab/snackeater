@@ -181,7 +181,6 @@ void getAtsignData(context, String notificationKey) async {
   var snack = snackKey.value.toString();
 
   popSnackBar(context, 'Yay! A$snack ! From $sharedByAtsign');
-
 }
 
 void sendAtsignData(context, String sendSnackTo) async {
@@ -228,9 +227,9 @@ void sendAtsignData(context, String sendSnackTo) async {
 
   // The magic line to send the snack
   await atClient.put(key, snack);
+  atClientManager.syncService.sync;
 
-  popSnackBar(context, 'We just sent. A$snack');
-
+  popSnackBar(context, 'We just sent. A$snack, to $sendSnackTo');
 }
 
 void popSnackBar(context, String snackmessage) {
@@ -243,7 +242,6 @@ void popSnackBar(context, String snackmessage) {
       },
     ),
   );
-  
-  ScaffoldMessenger.of(context).showSnackBar(snackBar);
 
+  ScaffoldMessenger.of(context).showSnackBar(snackBar);
 }
